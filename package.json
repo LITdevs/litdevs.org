@@ -1,0 +1,7 @@
+{
+    "name": "litsite",
+    "description": "A very LIT site.",
+    "scripts": {
+        "prod": ""
+    }
+}
