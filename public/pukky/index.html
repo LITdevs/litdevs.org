@@ -71,6 +71,7 @@
                     count -= 1;
                     count = Math.round(count);
                     document.querySelector("#count").textContent = count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                    if(count == -50,000) document.location.pathname = "/pukky/done";
                 }
             }, 1);
             setInterval(() => {
