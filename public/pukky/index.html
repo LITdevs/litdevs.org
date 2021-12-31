@@ -1,0 +1,117 @@
+<!-- there is more to come in the future. watch this space. -->
+<head>
+    <meta charset="utf-8">
+    <link rel="icon" type="image/png" href="customvukky.png"/>
+    <script src="assets/js/site.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Buy Custom Vukkies | Geocities</title>
+    <meta name="og:title" content="Buy Custom Vukkies!">
+    <meta name="og:description" content="They're all yours!">
+    <meta name="og:site_name" content="Spaghetti Web Hosting Services">
+    <meta property="og:image" content="https://vukky.ga/eggs/events/customvukkies/customvukky.png">
+    <style>
+        body {
+            background-image: url("/assets/img/vukky.png");
+            background-color: white;
+            color: red;
+            text-align: center;
+            font-size: 24px;
+            font-family: Comic Sans MS;
+        }
+
+        .vukkyworld {
+            background-image: url("./customvukky.png");
+            animation: scroll 70s linear infinite;
+        }
+
+        .legalaccepted {
+            background-image: url("/assets/img/vukkyhappy.png");
+        }
+
+        #legalaccept {
+            background-color: red;
+            color: white;
+        }
+
+        @keyframes scroll {
+            100% {
+                background-position:-3000px -3000px;
+            }
+        }
+    </style>
+    <script>
+        // geocities japan copyright enforcement
+        // (C) geocities japan
+
+        setTimeout(() => {
+            if(!document.title.endsWith(" | Geocities")) {
+                document.title = document.title + " | Geocities";
+            }
+        }, 0);
+    </script>
+    <script>
+        function invalid() {
+            console.log("owo")
+        }
+        function buy(){
+            let input = document.querySelectorAll("form > input");
+            document.querySelector("#boo").play();
+            document.querySelector("marquee").innerHTML = "You are number <b id='count'>125,236,152</b> in the queue. Please wait.";
+            document.querySelector("#buying").style.display = "";
+            document.querySelector("#muscop").style.display = "";
+            document.querySelector("#buywindow").style.display = "none";
+            document.querySelector("#legalterms").style.display = "none";
+            document.querySelector("body").classList.add("vukkyworld");
+            document.querySelector("body").classList.remove("legalaccepted");
+        }
+        (function(){
+            let count = 2000;
+            setInterval(() => {
+                if(document.querySelector("marquee").textContent.startsWith("You are number")) {
+                    count -= 1;
+                    count = Math.round(count);
+                    document.querySelector("#count").textContent = count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                }
+            }, 1);
+            setInterval(() => {
+                if(document.querySelector("marquee").textContent.startsWith("You are number")) {
+                    document.title = "Queue number: " + count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " | Geocities";
+                }
+            }, 3000)
+        })();
+    </script>
+</head>
+<body>
+    <audio id="boo" src="./buying.mp3" loop></audio>
+    <h1 style="font-family: Comic Sans MS"><marquee scrollamount="30">BUY CUSTOM BUKKIES</marquee></h1>
+    <div id="legalterms">
+        Hello! We are excited to hear you have decided to purchase a Custom Vukky.<br>
+        Before you continue, please agree to our legal terms.<br><br>
+        <marquee scrollamount="100" truespeed>FOR LEGAL REASONS, THIS IS A JOKE: Welcome to the license agreement! We will charge you forever for the rest of your life</marquee><br><br>
+        <button id="legalaccept" onclick="document.querySelector('body').classList.add('legalaccepted');document.querySelector('#legalterms').style.display='none';document.querySelector('#buywindow').style.display='';">ok</button>
+    </div>
+    <div id="buywindow" style="display: none;">
+        thank you for accepting! buy your items<br><br>
+        <img src="./customvukky.png" style="background-color: white;"> Custom Vukky
+        <br><p style="color: green; background-color: black;">now only $9.99 while vukkeis last!!<br>stock left: <span style="color: red;">ONE!!</span></p>
+        <form onsubmit="buy();return false;">
+            <input type="text" id="fname" name="fname" placeholder="Type of Vukky"  required="required"><br>
+            <input type="text" id="lname" name="lname" placeholder="Faceplate" required="required"><br>
+            <input type="text" id="nn" name="nn" placeholder="Name" required="required"><br><br>
+            <input type="text" id="a" name="a" pattern="[0-9]{4} [0-9]{4} [0-9]{4} [0-9]{4}" title="Credit card number" placeholder="Credit Card Number" required="required"><br>
+            <input type="month" id="aa" name="aa" placeholder="Credit Card Expiry Date"  required="required"><br>
+            <input type="text" id="aaa" name="aaa" placeholder="Credit Card CVV" pattern="\b[0-9]{3,4}\b" title="Credit card CVV" required="required"><br>
+            <input type="text" id="aaaa" name="aaaa" placeholder="Credit Card Holder" required="required"><br>
+            <input type="submit" id="buylol" value="Buy Now $$$">
+        </form>
+    </div> 
+    <div id="buying" style="display: none;">
+        closing the website will lead to you losing your items. you will have to start over.
+    </div>
+    <div id="footer">
+        <br> <a href='https://free-hit-counters.net/'>free-hit-counters.net</a> <script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=46e843f661ee7a1753cb83dc9593613ad9dae8b5'></script>
+        <script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/820976/t/1"></script>
+        <span id="muscop" style="display: none;"><br>music is title screne from pac man champion ship 2. copyright bandai namco. no copyright infringement intended! no copyright infringement intended!</p></span><br>
+        powered by spaghetti web hosting services and geocities japan.
+    </div>
+</body>
