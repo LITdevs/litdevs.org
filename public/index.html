@@ -3,9 +3,130 @@
     <head>
         <title>LIT Devs</title>
         <meta name='viewport' content='width=device-width, initial-scale=1'>
+        <script src="https://unpkg.com/@popperjs/core@2"></script>
+        <script src="https://unpkg.com/tippy.js@6"></script>
+        <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/animations/scale-extreme.css"/>
+        <style>
+            body {
+                background-image: url('img/vukkybg.png');
+            }
+
+            #vukky {
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                cursor: pointer;
+            }
+
+            #vukky:hover {
+                content: url("https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/static/vukkyflushedhappy.png");
+            }
+
+            #iconcontainer {
+                display: flex;
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, 130%);
+                height: 64px;
+                gap: 10px;
+                opacity: 0;
+            }
+
+            .tippy-box {
+                font-family: sans-serif;
+            }
+
+            .shrink {
+                animation: shrink 0.1s 1 forwards;
+            }
+            .grow {
+                animation: grow 0.1s 1 forwards;
+            }
+            #iconcontainer img:hover {
+                animation: growicon 0.1s 1 both;
+            }
+            .reveal {
+                animation: reveal 0.1s 1 forwards;
+            }
+            @keyframes shrink {
+                from {
+                    transform: scale(1) translate(-50%, -50%);
+                }
+                to {
+                    transform: scale(0.90) translate(-55%, -55%);
+                }
+            }
+            @keyframes grow {
+                from {
+                    transform: scale(0.90) translate(-55%, -55%);
+                }
+                to {
+                    transform: scale(1) translate(-50%, -50%);
+                }
+            }
+            @keyframes growicon {
+                from {
+                    transform: scale(1);
+                }
+                to {
+                    transform: scale(1.20);
+                }
+            }
+            @keyframes reveal {
+                from {
+                    opacity: 0;
+                }
+                to {
+                    opacity: 1;
+                }
+            }
+        </style>
+        <script>
+            function revealIcons() {
+                if(document.getElementById("iconcontainer").classList.contains("reveal")) {
+                    new Audio("vsite/osfail.wav").play();
+                } else {
+                    document.querySelector("#iconcontainer").style.display = "";
+                    document.querySelector("#iconcontainer").classList.add("reveal");
+                    new Audio("vsite/ospling.wav").play();
+                    document.querySelectorAll("#iconcontainer a img").forEach(function(e) {
+                        e.onmouseover = function() {
+                            new Audio("vsite/oshover.wav").play();
+                        }
+                        e.onclick = function() {
+                            new Audio("vsite/osclicky.wav").play();
+                        }
+                    });
+                }
+            }
+
+            // prep icons
+            window.addEventListener("DOMContentLoaded", function() {
+                tippy.setDefaultProps({placement: "bottom", animation: "scale-extreme"});
+                tippy('#vukkybox', {
+                    content: 'Vukkybox, a gacha game',
+                });
+                tippy('#vukkynews', {
+                    content: 'Vukky News, a news site',
+                });
+                tippy('#credits', {
+                    content: 'Credits for this site',
+                });
+
+                document.querySelector("#credits").onclick = function() {
+                    alert("This site uses sound effects from OneShot, tippy.js (https://atomiks.github.io/tippyjs), and Vukkies by Vukky who also made this site.\n\nThank you all!");
+                }
+            });
+        </script>
     </head>
     <body>
-        <h1>Welcome to LIT Devs!</h1>
-        <p>This is a placeholder for the home page. Come back later to see the exciting new homepage!</p>
+        <img id="vukky" onmousedown="this.classList.add('shrink');this.classList.remove('grow')" onmouseup="revealIcons();this.classList.add('grow');this.classList.remove('shrink')" src="https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/static/vukkyhappy.png">
+        <div id="iconcontainer" style="display: none;">
+            <a id="vukkybox" href="https://vukkybox.com"><img height=64 src="https://vukkybox.com/resources/icons/192.png"></a>
+            <a id="vukkynews" href="https://news.sus.omg.lol"><img height=54 src="https://vukkybox.com/resources/vukkyplanet.webp"></a>
+            <a id="credits" href="#"><img height=54 src="https://vukkybox.com/resources/doodlevukky.webp"></a>
+        </div>
     </body>
 </html>
