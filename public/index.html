@@ -6,6 +6,7 @@
         <script src="https://unpkg.com/@popperjs/core@2"></script>
         <script src="https://unpkg.com/tippy.js@6"></script>
         <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/animations/scale-extreme.css"/>
+        <link rel="preload" href="https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/static/vukkyflushedhappy.png" as="style">
         <style>
             body {
                 background-image: url('img/vukkybg.png');
@@ -82,6 +83,8 @@
                     opacity: 1;
                 }
             }
+
+            .boingo { animation:boingo 2s; } @keyframes boingo {from {margin:0;animation-timing-function:ease-out;}10% {margin:-12px 0 12px;animation-timing-function:ease-in;}20% {margin:0;animation-timing-function:ease-out;}30% {margin:-12px 0 12px;animation-timing-function:ease-in;}40% {margin:0;}}
         </style>
         <script>
             function revealIcons() {
@@ -122,6 +125,12 @@
                     alert("This site uses sound effects from OneShot, tippy.js (https://atomiks.github.io/tippyjs), and Vukkies by Vukky who also made this site.\n\nThank you all!");
                 }
             });
+
+            setTimeout(() => {
+                if(!document.getElementById("iconcontainer").classList.contains("reveal")) {
+                    document.querySelector("#vukky").classList.add("boingo");
+                }
+            }, 4000);
         </script>
     </head>
     <body>
