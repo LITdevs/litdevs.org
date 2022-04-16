@@ -39,6 +39,17 @@
                 opacity: 0;
             }
 
+            #socialscontainer {
+                display: flex;
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, 400%);
+                height: 38px;
+                gap: 10px;
+                opacity: 0;
+            }
+
             .tippy-box {
                 font-family: sans-serif;
             }
@@ -50,6 +61,9 @@
                 animation: grow 0.1s 1 forwards;
             }
             #iconcontainer img:hover {
+                animation: growicon 0.1s 1 both;
+            }
+            #socialscontainer img:hover {
                 animation: growicon 0.1s 1 both;
             }
             .reveal {
@@ -106,6 +120,14 @@
                             new Audio("vsite/osclicky.wav").play();
                         }
                     });
+                    document.querySelectorAll("#socialscontainer a img").forEach(function(e) {
+                        e.onmouseover = function() {
+                            new Audio("vsite/oshover.wav").play();
+                        }
+                        e.onclick = function() {
+                            new Audio("vsite/osclicky.wav").play();
+                        }
+                    });
                 }
             }
 
@@ -121,12 +143,32 @@
                 tippy('#wikilit', {
                     content: 'WikiLIT, the LIT Devs wiki',
                 });
+                tippy('#socials', {
+                    content: 'Social media',
+                });
                 tippy('#credits', {
                     content: 'Credits for this site',
+                });
+                
+                tippy('#github', {
+                    content: 'GitHub',
+                });
+                tippy('#discord', {
+                    content: 'Discord',
+                });
+                tippy('#twitter', {
+                    content: 'Twitter',
+                });
+                tippy('#facebook', {
+                    content: 'Facebook',
                 });
 
                 document.querySelector("#credits").onclick = function() {
                     alert("This site uses sound effects from OneShot, tippy.js (https://atomiks.github.io/tippyjs), and Vukkies by Vukky who also made this site.\n\nThank you all!");
+                }
+                document.querySelector("#socials").onclick = function() {
+                    document.querySelector("#socialscontainer").style.display = "";
+                    document.querySelector("#socialscontainer").classList.add("reveal");
                 }
             });
 
@@ -143,7 +185,14 @@
             <a id="vukkybox" href="https://vukkybox.com"><img height=64 src="https://vukkybox.com/resources/icons/192.png"></a>
             <a id="vukkynews" href="https://news.sus.omg.lol"><img height=54 src="https://vukkybox.com/resources/vukkyplanet.webp"></a>
             <a id="wikilit" href="https://wiki.litdevs.org"><img height=54 src="img/wikilogo.png"></a>
+            <a id="socials" href="#"><img height=54 src="img/vukkit.png"></a>
             <a id="credits" href="#"><img height=54 src="https://vukkybox.com/resources/doodlevukky.webp"></a>
+        </div>
+        <div id="socialscontainer" style="display: none;">
+            <a id="github" href="https://github.com/litdevs"><img height=32 src="img/github.png"></a>
+            <a id="discord" href="https://discord.gg/litdevs"><img height=38 src="img/discord.png"></a>
+            <a id="twitter" href="https://twitter.com/litdevs"><img height=32 src="img/twitter.png"></a>
+            <a id="facebook" href="https://www.facebook.com/litdevs"><img height=32 src="img/facebook.png"></a>
         </div>
     </body>
 </html>
