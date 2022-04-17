@@ -5,8 +5,13 @@
         <meta name='viewport' content='width=device-width, initial-scale=1'>
         <script src="https://unpkg.com/@popperjs/core@2"></script>
         <script src="https://unpkg.com/tippy.js@6"></script>
+        <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
         <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/animations/scale-extreme.css"/>
-        <link rel="preload" href="https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/static/vukkyflushedhappy.png" as="style">
+        <link rel="preload" href="https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/static/vukkyflushedhappy.png" as="image">
+        <link rel="preload" href="https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/static/vukkyhappy.png" as="image">
+        <link rel="preload" href="https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/static/vukkysad.png" as="image">
+        <link rel="preload" href="https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/static/vukkymad.png" as="image">
+        <link rel="preload" href="https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/static/vukkythink.png" as="image">
         <link rel="preload" href="vsite/ospling.wav" as="audio">
         <link rel="preload" href="vsite/oshover.wav" as="audio">
         <link rel="preload" href="vsite/osclicky.wav" as="audio">
@@ -24,7 +29,7 @@
                 cursor: pointer;
             }
 
-            #vukky:hover {
+            .notyetclickied:hover {
                 content: url("https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/static/vukkyflushedhappy.png");
             }
 
@@ -101,9 +106,24 @@
             function revealIcons() {
                 if(document.getElementById("iconcontainer").classList.contains("reveal")) {
                     new Audio("vsite/osfail.wav").play();
+                    document.querySelector("#vukky").src = "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/static/vukkysad.png";
+                    if(!window.vukkyabuse) {
+                        window.vukkyabuse = true;
+                        window.vukkytippy[0].setContent('Hey! I don\'t have more...');
+                        window.vukkytippy[0].show();
+                    } else {
+                        document.querySelector("#vukky").src = "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/static/vukkymad.png";
+                        let complaints = ['Stop it!', 'That hurts!', 'Ow!', 'Grr!', 'You\'re annoying me!', 'Should I poke you too?', 'There\'s no funny secret here!', 'COMPLAINT_BUT_PLACEHOLDER_STRING']
+                        window.vukkytippy[0].setContent(complaints[Math.floor(Math.random() * complaints.length)]);
+                        window.vukkytippy[0].show();
+                    }
                 } else {
                     document.querySelector("#iconcontainer").style.display = "";
                     document.querySelector("#iconcontainer").classList.add("reveal");
+                    document.querySelector("#vukky").classList.remove("notyetclickied");
+                    document.querySelector("#vukky").src = "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/static/vukkyhappy.png";
+                    window.vukkytippy[0].setContent('Here they are! They\'re cool, right?');
+                    window.vukkytippy[0].show();
                     new Audio("vsite/ospling.wav").play();
                     document.querySelectorAll("#iconcontainer a img").forEach(function(e) {
                         e.onmouseover = function() {
@@ -159,13 +179,42 @@
                     content: 'Google+',
                 });
 
+                window.vukkytippy = tippy('#vukky', {
+                    content: 'Click me! I have some cool stuff to show you.',
+                    placement: 'top'
+                });
+
                 document.querySelector("#credits").onclick = function() {
+                    confetti({
+                        particleCount: 100,
+                        spread: 70,
+                        origin: { y: 0.55 }
+                    });
+                    document.querySelector("#vukky").src = "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/static/vukkyhappy.png";
+                    window.vukkytippy[0].setContent('You\'re the only person to click that button.');
+                    window.vukkytippy[0].show();
                     alert("This site uses sound effects from OneShot, tippy.js (https://atomiks.github.io/tippyjs), and Vukkies by Vukky who also made this site.\n\nThank you all!");
                 }
                 document.querySelector("#socials").onclick = function() {
                     document.querySelector("#socialscontainer").style.display = "";
                     document.querySelector("#socialscontainer").classList.add("reveal");
                 }
+
+                document.querySelector("#gplus").addEventListener("mousedown", function() {
+                    document.querySelector("#vukky").src = "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/static/vukkysad.png";
+                    window.vukkytippy[0].setContent('Yeah, that doesn\'t work... But thanks for trying!');
+                    window.vukkytippy[0].show();
+                });
+                let cursor = 0;
+                const KONAMI_CODE = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
+                document.addEventListener('keydown', (e) => {
+                    cursor = (e.keyCode == KONAMI_CODE[cursor]) ? cursor + 1 : 0;
+                    if (cursor == KONAMI_CODE.length) {
+                        document.querySelector("#vukky").src = "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/static/vukkythink.png";
+                        window.vukkytippy[0].setContent('Hey, what were those key presses?');
+                        window.vukkytippy[0].show();
+                    }
+                });
             });
 
             setTimeout(() => {
@@ -176,7 +225,7 @@
         </script>
     </head>
     <body>
-        <img id="vukky" onmousedown="this.classList.add('shrink');this.classList.remove('grow')" onmouseup="revealIcons();this.classList.add('grow');this.classList.remove('shrink')" src="https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/static/vukkyhappy.png">
+        <img id="vukky" class="notyetclickied" onmousedown="this.classList.add('shrink');this.classList.remove('grow')" onmouseup="revealIcons();this.classList.add('grow');this.classList.remove('shrink')" height=128 src="https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/static/vukky.png">
         <div id="iconcontainer" style="display: none;">
             <a id="vukkybox" href="https://vukkybox.com"><img height=64 src="https://vukkybox.com/resources/icons/192.png"></a>
             <a id="vukkynews" href="https://news.sus.omg.lol"><img height=54 src="https://vukkybox.com/resources/vukkyplanet.webp"></a>
@@ -189,7 +238,7 @@
             <a id="discord" href="https://discord.gg/litdevs"><img height=38 src="img/discord.png"></a>
             <a id="twitter" href="https://twitter.com/litdevs"><img height=32 src="img/twitter.png"></a>
             <a id="facebook" href="https://www.facebook.com/litdevs"><img height=32 src="img/facebook.png"></a>
-            <a id="gplus" href="https://www.youtube.com/watch?v=2xx_2XNxxfA"><img height=32 src="img/gplus.png"></a>
+            <a id="gplus" style="cursor: pointer;"><img height=32 src="img/gplus.png"></a>
         </div>
     </body>
 </html>
