@@ -60,11 +60,12 @@
             .grow {
                 animation: grow 0.1s 1 forwards;
             }
-            #iconcontainer img:hover {
-                animation: growicon 0.1s 1 both;
+            #iconcontainer img, #socialscontainer img {
+                transform: scale(1);
+                transition: transform 0.1s ease-in-out;
             }
-            #socialscontainer img:hover {
-                animation: growicon 0.1s 1 both;
+            #iconcontainer img:hover, #socialscontainer img:hover {
+                transform: scale(1.20);
             }
             .reveal {
                 animation: reveal 0.1s 1 forwards;
@@ -83,14 +84,6 @@
                 }
                 to {
                     transform: scale(1) translate(-50%, -50%);
-                }
-            }
-            @keyframes growicon {
-                from {
-                    transform: scale(1);
-                }
-                to {
-                    transform: scale(1.20);
                 }
             }
             @keyframes reveal {
