@@ -65,11 +65,11 @@
             .grow {
                 animation: grow 0.1s 1 forwards;
             }
-            #iconcontainer img, #socialscontainer img {
+            #iconcontainer a, #socialscontainer a {
                 transform: scale(1);
                 transition: transform 0.1s ease-in-out;
             }
-            #iconcontainer img:hover, #socialscontainer img:hover {
+            #iconcontainer a:hover, #socialscontainer a:hover {
                 transform: scale(1.20);
             }
             .reveal {
@@ -125,7 +125,7 @@
                     window.vukkytippy[0].setContent('Here they are! They\'re cool, right?');
                     window.vukkytippy[0].show();
                     new Audio("vsite/ospling.wav").play();
-                    document.querySelectorAll("#iconcontainer a img").forEach(function(e) {
+                    document.querySelectorAll("#iconcontainer a").forEach(function(e) {
                         e.onmouseover = function() {
                             new Audio("vsite/oshover.wav").play();
                         }
@@ -133,7 +133,7 @@
                             new Audio("vsite/osclicky.wav").play();
                         }
                     });
-                    document.querySelectorAll("#socialscontainer a img").forEach(function(e) {
+                    document.querySelectorAll("#socialscontainer a").forEach(function(e) {
                         e.onmouseover = function() {
                             new Audio("vsite/oshover.wav").play();
                         }
@@ -184,7 +184,7 @@
                     placement: 'top'
                 });
 
-                document.querySelector("#credits").onclick = function() {
+                document.querySelector("#credits").addEventListener("click", function() {
                     confetti({
                         particleCount: 100,
                         spread: 70,
@@ -194,11 +194,11 @@
                     window.vukkytippy[0].setContent('You\'re the only person to click that button.');
                     window.vukkytippy[0].show();
                     alert("This site uses sound effects from OneShot, tippy.js (https://atomiks.github.io/tippyjs), and Vukkies by Vukky who also made this site.\n\nThank you all!");
-                }
-                document.querySelector("#socials").onclick = function() {
+                });
+                document.querySelector("#socials").addEventListener("click", function() {
                     document.querySelector("#socialscontainer").style.display = "";
                     document.querySelector("#socialscontainer").classList.add("reveal");
-                }
+                });
 
                 document.querySelector("#gplus").addEventListener("mousedown", function() {
                     document.querySelector("#vukky").src = "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/static/vukkysad.png";
