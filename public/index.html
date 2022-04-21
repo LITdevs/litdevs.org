@@ -118,6 +118,7 @@
                         window.vukkytippy[0].show();
                     }
                 } else {
+                    document.querySelector("#bangermusic").play();
                     document.querySelector("#iconcontainer").style.display = "";
                     document.querySelector("#iconcontainer").classList.add("reveal");
                     document.querySelector("#vukky").classList.remove("notyetclickied");
@@ -193,7 +194,7 @@
                     document.querySelector("#vukky").src = "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/static/vukkyhappy.png";
                     window.vukkytippy[0].setContent('You\'re the only person to click that button.');
                     window.vukkytippy[0].show();
-                    alert("This site uses sound effects from OneShot, tippy.js (https://atomiks.github.io/tippyjs), and Vukkies by Vukky who also made this site.\n\nThank you all!");
+                    alert("This site uses sound effects from OneShot, tippy.js (https://atomiks.github.io/tippyjs), music by PaulRHJT, and Vukkies by Vukky who also made this site.\n\nThank you all!");
                 }
                 document.querySelector("#socials").onclick = function() {
                     document.querySelector("#socialscontainer").style.display = "";
@@ -225,6 +226,7 @@
         </script>
     </head>
     <body>
+        <audio id="epicmusic" src="vsite/elucidate.ogg" preload="auto"></audio>
         <img id="vukky" class="notyetclickied" onmousedown="this.classList.add('shrink');this.classList.remove('grow')" onmouseup="revealIcons();this.classList.add('grow');this.classList.remove('shrink')" height=128 src="https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/static/vukky.png">
         <div id="iconcontainer" style="display: none;">
             <a id="vukkybox" href="https://vukkybox.com"><img height=64 src="https://vukkybox.com/resources/icons/192.png"></a>
