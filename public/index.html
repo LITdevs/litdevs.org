@@ -184,9 +184,6 @@
                 tippy('#roblox', {
                     content: 'Roblox',
                 });
-                tippy('#gplus', {
-                    content: 'Google+',
-                });
 
                 window.vukkytippy = tippy('#vukky', {
                     content: 'Click me! I have some cool stuff to show you.',
@@ -209,11 +206,6 @@
                     document.querySelector("#socialscontainer").classList.add("reveal");
                 });
 
-                document.querySelector("#gplus").addEventListener("mousedown", function() {
-                    document.querySelector("#vukky").src = "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/emojis/static/vukkysad.png";
-                    window.vukkytippy[0].setContent('Yeah, that doesn\'t work... But thanks for trying!');
-                    window.vukkytippy[0].show();
-                });
                 let cursor = 0;
                 const KONAMI_CODE = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
                 document.addEventListener('keydown', (e) => {
@@ -249,7 +241,6 @@
             <a id="twitter" href="https://twitter.com/litdevs" target="_blank"><img height=32 src="img/twitter.png"></a>
             <a id="facebook" href="https://www.facebook.com/litdevs" target="_blank"><img height=32 src="img/facebook.png"></a>
             <a id="roblox" href="https://www.roblox.com/games/6495194868/SteelBlox-Clothing" target="_blank"><img height=32 src="img/roblox.png"></a>
-            <a id="gplus" style="cursor: pointer;"><img height=32 src="img/gplus.png"></a>
         </div>
     </body>
 </html>
