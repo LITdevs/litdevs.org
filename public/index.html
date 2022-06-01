@@ -103,6 +103,7 @@
             .boingo { animation:boingo 2s; } @keyframes boingo {from {margin:0;animation-timing-function:ease-out;}10% {margin:-12px 0 12px;animation-timing-function:ease-in;}20% {margin:0;animation-timing-function:ease-out;}30% {margin:-12px 0 12px;animation-timing-function:ease-in;}40% {margin:0;}}
         </style>
         <script>
+            let complaintCounter = 0;
             function revealIcons() {
                 if(document.getElementById("iconcontainer").classList.contains("reveal")) {
                     new Audio("vsite/osfail.wav").play();
@@ -113,6 +114,14 @@
                         window.vukkytippy[0].show();
                     } else {
                         document.querySelector("#vukky").src = "https://logo.litdevs.org/api/vukky";
+                        if (complaintCounter == 20) {
+                            window.vukkytippy[0].setContent("Okay fine!! One more click and I will show it to you!");
+                            return window.vukkytippy[0].show();
+                        }
+                        if (complaintCounter == 21) {
+                            return window.open("https://https://litdevs.org/logodesigner/")
+                        }
+                        complaintCounter++;
                         let complaints = ['Stop it!', 'That hurts!', 'Ow!', 'Grr!', 'You\'re annoying me!', 'Should I poke you too?', 'There\'s no funny secret here!', 'COMPLAINT_BUT_PLACEHOLDER_STRING']
                         window.vukkytippy[0].setContent(complaints[Math.floor(Math.random() * complaints.length)]);
                         window.vukkytippy[0].show();
