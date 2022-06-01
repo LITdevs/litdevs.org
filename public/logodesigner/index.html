@@ -2,11 +2,73 @@
 <html>
 	<head>
 		<title>LIT Devs logo editor</title>
-		<%- include('./common/darkmode.ejs') %>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="https://auth.litdevs.org/resources/style.css">
+        <script src="https://kit.fontawesome.com/1b8f1d833c.js" crossorigin="anonymous"></script>
+        <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+        document.addEventListener('DOMContentLoaded', function () {
+            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.querySelector(".themeSwitch").classList.add("fa-sun")
+            } else {
+                document.querySelector(".themeSwitch").classList.add("fa-moon")
+            }
+        })
+        function toggleTheme() {
+            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                localStorage.theme = 'light'
+                document.documentElement.classList.remove('dark')
+                document.querySelector(".themeSwitch").classList.add("fa-moon")
+                document.querySelector(".themeSwitch").classList.remove("fa-sun")
+                document.querySelectorAll(".bg-wlight-dark").forEach(e => { if(!e.classList.contains("dmi")) e.classList.remove("bg-wlight-dark"); if(!e.classList.contains("dmi")) e.classList.add("bg-wlight") })
+
+            } else {
+                localStorage.theme = 'dark'
+                document.documentElement.classList.add('dark')
+                document.querySelector(".themeSwitch").classList.add("fa-sun")
+                document.querySelector(".themeSwitch").classList.remove("fa-moon")
+                document.querySelectorAll(".bg-wlight").forEach(e => {  if(!e.classList.contains("dmi")) e.classList.remove("bg-wlight");  if(!e.classList.contains("dmi")) e.classList.add("bg-wlight-dark") })
+            }
+        }
+        </script>
   	</head>
   	<body class="bg-gray-900 vbg">
-		<%- include("./common/nav.ejs", {user: user}); %> 
-        <audio autoplay loop src="/resources/designer/unleashvukkies.mp3"></audio>
+		<div class="bg-vwhite dark:bg-vgray bg-gradient-to-r from-[#00A8F3] to-blue-600 shadow-lg text-vwhite w-full h-12 mb-5 flex">
+            <div class="float-left inline-flex">
+                <img src="https://auth.litdevs.org/resources/litauth.png" class="h-10"><span class="align-middle">LIT Devs</span>
+            </div>
+            <div id="themeSwitch" class="hover:bg-wlight-dark rounded-md my-auto ml-auto mr-2 inline-flex p-2 cursor-pointer" onclick="toggleTheme()">
+                <i title="Toggle darkmode" class="themeSwitch fa-solid"></i>
+            </div>
+            <div id="ubutton" class="hover:bg-wlight-dark rounded-md my-auto mr-2 inline-flex p-2">
+                <a href="/"><div>
+                    <p class="inline truncate" title="Login">Login</p>&nbsp;&nbsp;<i class="fa-solid fa-key inline my-auto ml-auto"></i>
+                </div></a>
+            </div>
+            
+        </div>
+        
+        <script>
+            let udropdownState = false;
+            function udropdown(forceClose) {
+                udropdownState = !udropdownState;
+                if (forceClose) udropdownState = false;
+                if (udropdownState) {
+                    document.querySelector("#ucontent").classList.remove("hidden");
+                    //document.querySelector("#ubutton").classList.add(`bg-wlight${localStorage.theme == "dark" ? "-dark" : ""}`);
+                    document.querySelector("#ubutton").classList.add(`bg-wlight-dark`);
+                } else {
+                    document.querySelector("#ucontent").classList.add("hidden");
+                    document.querySelector("#ubutton").classList.remove("bg-wlight");
+                    document.querySelector("#ubutton").classList.remove("bg-wlight-dark");
+                }
+            }
+        </script>
+        <audio autoplay loop src="https://auth.litdevs.org/resources/designer/unleashvukkies.mp3"></audio>
 		<h1 class="text-center text-vwhite text-3xl py-5"><b>change our logo TODAY!!</b></h1>
 		<div class="text-center text-vwhite py-2 flex w-full justify-center">
 			<p>can someone kill these stupid nimpkos please<br>especially that one there -><br><small>do you think that one is about to murder me?<br>you wouldn't do that.. right niko?</small></p> <!-- placeholder text, actual text later  wow this text looks super good-->
@@ -77,15 +139,15 @@
 			</div>
 			<div id="panel-right" class="bg-vwhite rounded-r-lg sticky left-0 text-black shadow-xl border-[#00A8F3] border-4 border-l-0">
 				<div class="inline-block">
-				    <img class="inline-block sticky top-2" src="/resources/designer/bgsquare.svg"></img>
+				    <img class="inline-block sticky top-2" src="https://auth.litdevs.org/resources/designer/bgsquare.svg"></img>
 					<div class="inline-block sticky top-0 rounded-full w-14 h-10 bg-[#FFFFFF] border-2 border-amber-400" id="bgColorPickerButton" onclick="document.getElementById('bgColorPicker').click()"><i class="fa-solid fa-eye-dropper"></i></div>
-					<input class="rounded-lg opacity-0" name="bgColorPicker" type="color" id="bgColorPicker" onchange="updateBgColor(this);new Audio('/resources/designer/selection.wav').play()" value="#FFFFFF">
+					<input class="rounded-lg opacity-0" name="bgColorPicker" type="color" id="bgColorPicker" onchange="updateBgColor(this);new Audio('https://auth.litdevs.org/resources/designer/selection.wav').play()" value="#FFFFFF">
 				</div>
 				<br>
                 <div class="inline-block">
-				    <img class="inline-block sticky top-2" src="/resources/designer/vukkyoutline.svg"></img>
+				    <img class="inline-block sticky top-2" src="https://auth.litdevs.org/resources/designer/vukkyoutline.svg"></img>
 					<div class="inline-block sticky top-0 rounded-full w-14 h-10 bg-[#00A8F3] border-2 border-amber-400" id="bodyColorPickerButton" onclick="document.getElementById('bodyColorPicker').click()"><i class="fa-solid fa-eye-dropper"></i></div>
-					<input class="rounded-lg opacity-0" name="bodyColorPicker" type="color" id="bodyColorPicker" onchange="updateBodyColor(this);new Audio('/resources/designer/selection.wav').play()" value="#00A8F3">
+					<input class="rounded-lg opacity-0" name="bodyColorPicker" type="color" id="bodyColorPicker" onchange="updateBodyColor(this);new Audio('https://auth.litdevs.org/resources/designer/selection.wav').play()" value="#00A8F3">
 				</div>
 				<br>
 				<img src="https://cdn.discordapp.com/emojis/723385258136829963.png" title="That little shit... I will get my revenge...">
