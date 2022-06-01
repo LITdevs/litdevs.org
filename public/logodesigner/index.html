@@ -144,7 +144,7 @@
 	}, 100)
 	function submitChanges() {
 		document.getElementById("submitText").innerHTML = `<img src="https://vukkybox.com/resources/pukkies/skelly.webp" width="48">`
-		fetch("https://logo.litdevs.org/edit", {
+		fetch("https://logo.litdevs.org/api/edit", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json"
