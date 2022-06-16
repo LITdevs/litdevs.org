@@ -212,13 +212,19 @@
                 });
 
                 let cursor = 0;
+                let konami = 0;
                 const KONAMI_CODE = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
                 document.addEventListener('keydown', (e) => {
                     cursor = (e.keyCode == KONAMI_CODE[cursor]) ? cursor + 1 : 0;
                     if (cursor == KONAMI_CODE.length) {
-                        document.querySelector("#vukky").src = "https://logo.litdevs.org/api/vukky";
-                        window.vukkytippy[0].setContent('Hey, what were those key presses?');
-                        window.vukkytippy[0].show();
+                        if (konami == 0) {
+                            document.querySelector("#vukky").src = "https://logo.litdevs.org/api/vukky";
+                            window.vukkytippy[0].setContent('Hey, what were those key presses?');
+                            window.vukkytippy[0].show();
+                            konami++;
+                        } else {
+                            window.location.href = "/water"
+                        }
                     }
                 });
             });
