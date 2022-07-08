@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<clientConfig version="1.1">
+    <emailProvider id="mail.wanderers.cloud">
+      <domain>litdevs.org</domain>
+      <domain>vukkybox.com</domain>
+      <domain>wanderers.cloud</domain>
+      <domain>sus.omg.lol</domain>
+
+      <displayName>LIT Devs Mail Server</displayName>
+      <displayShortName>LITmail</displayShortName>
+
+      <incomingServer type="imap">
+        <hostname>mail.wanderers.cloud</hostname>
+        <port>143</port>
+        <socketType>STARTTLS</socketType>
+        <username>%EMAILADDRESS%</username>
+        <authentication>password-cleartext</authentication>
+      </incomingServer>
+
+      <outgoingServer type="smtp">
+         <hostname>mail.wanderers.cloud</hostname>
+         <port>465</port>
+         <socketType>STARTTLS</socketType>
+         <username>%EMAILADDRESS%</username>
+        <authentication>password-cleartext</authentication>
+      </outgoingServer>
+    </emailProvider>
+</clientConfig>
