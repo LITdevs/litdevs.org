@@ -1,0 +1,9 @@
+@font-face {
+	font-family: wuhu;
+	src: url(https://wanderers.cloud/file/Ax9ClQ.otf);
+}
+
+* {
+	font-family: wuhu;
+	font-size: 15px;
+}
