@@ -4,10 +4,8 @@
 		<title>LIT Devs logo editor</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 		<link rel="stylesheet" href="https://auth.litdevs.org/resources/style.css">
-        <link rel="preload" href="https://vukkybox.com/resources/pukkies/skelly.webp" as="image">
-        <link rel="preload" href="https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyyes.png?raw=true" as="image">
-        <link rel="preload" href="https://auth.litdevs.org/resources/designer/vukkyoutline.svg" as="image">
-        <link rel="preload" href="https://cdn.discordapp.com/emojis/945764595128209418.gif" as="image">
+        <link rel="preload" href="/img/vukkyspin.webp" as="image">
+        <link rel="preload" href="/img/vukkyyes.png" as="image">
 		<script src="https://kit.fontawesome.com/1b8f1d833c.js" crossorigin="anonymous"></script>
 		<script>
 		if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -145,7 +143,7 @@
 		updateFlameColor(document.querySelector("#flameColorPicker"));
 	}, 100)
 	function submitChanges() {
-		document.getElementById("submitText").innerHTML = `<img src="https://vukkybox.com/resources/pukkies/skelly.webp" width="48">`
+		document.getElementById("submitText").innerHTML = `<img src="/img/vukkyspin.webp" width="48">`
 		fetch("https://logo.litdevs.org/api/edit", {
 			method: "POST",
 			headers: {
@@ -158,7 +156,7 @@
 			})
 		}).then(res => {
 			if (res.status == 200) {
-				document.getElementById("submitText").innerHTML = `<img src="https://github.com/Vukkyy/vukmoji/blob/master/emojis/static/vukkyyes.png?raw=true" width="48">`
+				document.getElementById("submitText").innerHTML = `<img src="/img/vukkyyes.png" width="48">`
 				setTimeout(() => {
 					document.getElementById("submitText").innerHTML = `CHANGE THE LOGO!!!`
 				}, 60000)
